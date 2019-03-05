@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/gitcompare/static/js/runtime~main.dd9035d1.js"
   },
   {
-    "revision": "26a4295ae89c07e4342a",
-    "url": "/gitcompare/static/js/main.26a4295a.chunk.js"
+    "revision": "1c4bda9fd9605c096f7f",
+    "url": "/gitcompare/static/js/main.1c4bda9f.chunk.js"
   },
   {
     "revision": "2a0317afafce174b263d",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/gitcompare/static/css/2.e8defce6.chunk.css"
   },
   {
-    "revision": "97b064aaf56b3548c74e3fed121a51c3",
+    "revision": "6b845a0ce9327b6cee47bc0f837a3464",
     "url": "/gitcompare/index.html"
   }
 ];
