@@ -20,17 +20,15 @@ export default class Main extends Component {
   async componentDidMount() {
     this.setState({ loading: true });
 
-    const repositories = JSON.parse(localStorage.getItem('@gitcompare/repositories'));
-
-    this.setState({ loading: false, repositories });
+    this.setState({ loading: false, repositories: await this.getLocalRepositories() });
   }
+
+  getLocalRepositories = async () => JSON.parse(await localStorage.getItem('@gitcompare/repositories')) || [];
 
   handleAddRepository = async (e) => {
     e.preventDefault();
 
-    this.setState({ loading: true });
-
-    const { repositories, repositoryInput } = this.state;
+    const { repositoryInput, repositories } = this.state;
 
     try {
       const { data: repository } = await api.get(`/repos/${repositoryInput}`);
@@ -43,9 +41,11 @@ export default class Main extends Component {
         repositoryError: false,
       });
 
+      const localRepositories = await this.getLocalRepositories();
+
       await localStorage.setItem(
         '@gitcompare/repositories',
-        JSON.stringify(this.state.repositories),
+        JSON.stringify([...localRepositories, repository]),
       );
     } catch (err) {
       this.setState({ repositoryError: true });
@@ -65,8 +65,6 @@ export default class Main extends Component {
   };
 
   handleUpdateRepository = async (id) => {
-    this.setState({ loading: true });
-
     const { repositories } = this.state;
 
     const repository = repositories.find(repo => repo.id === id);
@@ -97,6 +95,7 @@ export default class Main extends Component {
     return (
       <Container>
         <img src={logo} alt="Github Compare" />
+
         <Form withError={repositoryError} onSubmit={this.handleAddRepository}>
           <input
             type="text"
@@ -106,6 +105,7 @@ export default class Main extends Component {
           />
           <button type="submit">{loading ? <i className="fa fa-spinner fa-pulse" /> : 'OK'}</button>
         </Form>
+
         <CompareList
           repositories={repositories}
           removeRepository={this.handleRemoveRepository}
