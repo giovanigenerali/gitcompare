@@ -2,7 +2,7 @@
   "name": "gitcompare",
   "version": "0.1.0",
   "private": false,
-  "homepage": "http://giovanigenerali.github.io/gitcompare",
+  "homepage": "https://giovanigenerali.github.io/gitcompare/",
   "dependencies": {
     "axios": "^0.18.0",
     "font-awesome": "^4.7.0",
