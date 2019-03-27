@@ -2,7 +2,6 @@
   "name": "gitcompare",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://giovanigenerali.github.io/gitcompare/",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
